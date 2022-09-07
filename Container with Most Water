@@ -1,0 +1,23 @@
+ int maxArea(vector<int>& height) {
+         if (height.size() == 2){
+            return *min_element(height.begin(),height.end());
+        }
+        int max1 = 0;
+        int p1 = 0;
+        int p2 = height.size()-1;
+        for (int i = 0 ; i < height.size() ; i++){
+            int min1 = min(height[p1],height[p2]);
+            int interim = min1*(p2-p1);
+            if (interim > max1){
+                max1 = interim;
+            }
+            if (min1 == height[p1]){
+                p1++;
+            }
+            else{
+                p2--;
+            }
+        }
+        return max1;
+        
+    }
